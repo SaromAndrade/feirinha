@@ -21,19 +21,21 @@ class Route implements \Serializable
 {
     private $path = '/';
     private $host = '';
-    private $schemes = array();
-    private $methods = array();
-    private $defaults = array();
-    private $requirements = array();
-    private $options = array();
+    private $schemes = [];
+    private $methods = [];
+    private $defaults = [];
+    private $requirements = [];
+    private $options = [];
     private $condition = '';
 
     /**
-     * @var null|CompiledRoute
+     * @var CompiledRoute|null
      */
     private $compiled;
 
     /**
+     * Constructor.
+     *
      * Available options:
      *
      *  * compiler_class: A class name able to compile this route instance (RouteCompiler by default)
@@ -48,7 +50,7 @@ class Route implements \Serializable
      * @param string|string[] $methods      A required HTTP method or an array of restricted methods
      * @param string          $condition    A condition that should evaluate to true for the route to match
      */
-    public function __construct($path, array $defaults = array(), array $requirements = array(), array $options = array(), $host = '', $schemes = array(), $methods = array(), $condition = '')
+    public function __construct($path, array $defaults = [], array $requirements = [], array $options = [], $host = '', $schemes = [], $methods = [], $condition = '')
     {
         $this->setPath($path);
         $this->setDefaults($defaults);
@@ -65,7 +67,7 @@ class Route implements \Serializable
      */
     public function serialize()
     {
-        return serialize(array(
+        return serialize([
             'path' => $this->path,
             'host' => $this->host,
             'defaults' => $this->defaults,
@@ -75,7 +77,7 @@ class Route implements \Serializable
             'methods' => $this->methods,
             'condition' => $this->condition,
             'compiled' => $this->compiled,
-        ));
+        ]);
     }
 
     /**
@@ -194,7 +196,7 @@ class Route implements \Serializable
      */
     public function hasScheme($scheme)
     {
-        return in_array(strtolower($scheme), $this->schemes, true);
+        return \in_array(strtolower($scheme), $this->schemes, true);
     }
 
     /**
@@ -247,9 +249,9 @@ class Route implements \Serializable
      */
     public function setOptions(array $options)
     {
-        $this->options = array(
+        $this->options = [
             'compiler_class' => 'Symfony\\Component\\Routing\\RouteCompiler',
-        );
+        ];
 
         return $this->addOptions($options);
     }
@@ -312,7 +314,7 @@ class Route implements \Serializable
      */
     public function hasOption($name)
     {
-        return array_key_exists($name, $this->options);
+        return \array_key_exists($name, $this->options);
     }
 
     /**
@@ -336,7 +338,7 @@ class Route implements \Serializable
      */
     public function setDefaults(array $defaults)
     {
-        $this->defaults = array();
+        $this->defaults = [];
 
         return $this->addDefaults($defaults);
     }
@@ -381,7 +383,7 @@ class Route implements \Serializable
      */
     public function hasDefault($name)
     {
-        return array_key_exists($name, $this->defaults);
+        return \array_key_exists($name, $this->defaults);
     }
 
     /**
@@ -421,7 +423,7 @@ class Route implements \Serializable
      */
     public function setRequirements(array $requirements)
     {
-        $this->requirements = array();
+        $this->requirements = [];
 
         return $this->addRequirements($requirements);
     }
@@ -466,7 +468,7 @@ class Route implements \Serializable
      */
     public function hasRequirement($key)
     {
-        return array_key_exists($key, $this->requirements);
+        return \array_key_exists($key, $this->requirements);
     }
 
     /**
@@ -535,7 +537,7 @@ class Route implements \Serializable
 
     private function sanitizeRequirement($key, $regex)
     {
-        if (!is_string($regex)) {
+        if (!\is_string($regex)) {
             throw new \InvalidArgumentException(sprintf('Routing requirement for "%s" must be a string.', $key));
         }
 

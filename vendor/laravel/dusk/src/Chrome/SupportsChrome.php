@@ -2,9 +2,7 @@
 
 namespace Laravel\Dusk\Chrome;
 
-use RuntimeException;
 use Symfony\Component\Process\Process;
-use Symfony\Component\Process\ProcessBuilder;
 
 trait SupportsChrome
 {
@@ -55,9 +53,9 @@ trait SupportsChrome
     /**
      * Build the process to run the Chromedriver.
      *
-     * @throws \RuntimeException if the driver file path doesn't exist.
      *
      * @return \Symfony\Component\Process\Process
+     * @throws \RuntimeException if the driver file path doesn't exist.
      */
     protected static function buildChromeProcess()
     {
