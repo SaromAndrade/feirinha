@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\login;
+use App\usuario;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -62,13 +63,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $login = new login;
+        $usuario = new usuario;
+        $this->login->insert([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'remember-token' => $data['remember-token'],
-            'role_id' => $data['role_id']
+            'remember-token' => $data['remember-token']
+            
         ]);
+       // $this->$usuario->insert ([
+        //'idlogin' => $data[],
+        //'data_nasc' => $data['data_nasc'],
+        //'cpf'=>$data['cpf'],
+        //'name' => $data['name']]);
     }
     
     
