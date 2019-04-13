@@ -24,8 +24,8 @@ $this->post('logout', 'Auth\LoginController@logout')->name('auth.logout');
 
 // Register Routes...
 
-$this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('auth.register');
-$this->post('registrando', 'Auth\RegisterController@create')->name('auth.registrando');
+$this->get('register', 'loginController@showRegistrationForm')->name('auth.register');
+$this->any('registrando', 'loginController@createLogin')->name('login.register');
 //$this->post('registrando', 'Auth\RegisterController@register')->name('auth.registrando');
 
 

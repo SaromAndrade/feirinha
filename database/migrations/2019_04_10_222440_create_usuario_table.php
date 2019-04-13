@@ -18,7 +18,6 @@ class CreateUsuarioTable extends Migration
             $table->string('name');
             $table->date('data_nasc');
             $table->string('cpf', 11)->unique();
-        
             $table->integer('avaliacao');
             $table->integer('idlogin')->unsigned()->nullable();
             $table->foreign('idlogin', '54266246246246')->references('id')->on('login')->onDelete('cascade');

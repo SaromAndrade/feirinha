@@ -7,7 +7,7 @@
                 <div class="col-lg-5 col-md-8 align-item-center">
                     <div class="border border">
                         <h3 class="bg-gray p-4">Registrar</h3>
-                        <form action="{{ route('auth.registrando') }}" method="post">
+                        <form action="{{ route('login.register') }}" method="post">
                             <fieldset class="p-4">
                                 <input type="email" placeholder="Email*" class="border p-3 w-100 my-2"
                                 name="email">
@@ -19,7 +19,7 @@
                                 name="data_nasc" >
                                  <input type="text" placeholder="CPF*" class="border p-3 w-100 my-2 cpf"
                                 name="cpf" >
-                                 <input type="hidden" name="remember_token" value="{{csrf_token()}}">
+                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                                  <input type="hidden" name="role_id" value="2">
                                 <div class="loggedin-forgot d-inline-flex my-3">
                                         <input type="checkbox" id="registering" class="mt-1">

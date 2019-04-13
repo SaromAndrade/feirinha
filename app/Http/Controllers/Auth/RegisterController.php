@@ -61,22 +61,21 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
-    {
-        $login = new login;
-        $usuario = new usuario;
-        $this->login->insert([
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'remember-token' => $data['remember-token']
-            
-        ]);
+    protected function create(Request $request)
+    {   
+        dd('teste');
+        //$login->create($request->([
+           // 'email' => $data['email'],
+            //'password' => bcrypt($data['password']),
+            //'remember-token' => $data['remember-token']
+        //]));
+
+
        // $this->$usuario->insert ([
         //'idlogin' => $data[],
         //'data_nasc' => $data['data_nasc'],
         //'cpf'=>$data['cpf'],
         //'name' => $data['name']]);
     }
-    
-    
+
 }
