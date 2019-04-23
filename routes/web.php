@@ -18,14 +18,15 @@ Route::get('adlisting', 'Auth\Dashboard\AdlistingController@index')->name('adlis
 // Authentication Routes...
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
 $this->post('login', 'Auth\LoginController@login')->name('auth.login');
+
 $this->post('logout', 'Auth\LoginController@logout')->name('auth.logout');
 
 
 
 // Register Routes...
 
-$this->get('register', 'loginController@showRegistrationForm')->name('auth.register');
-$this->any('registrando', 'loginController@createLogin')->name('login.register');
+$this->get('register', 'Auth\NewRegisterController@showRegistrationForm')->name('auth.register');
+$this->any('registrando', 'Auth\NewRegisterController@createLogin')->name('auth.register');
 //$this->post('registrando', 'Auth\RegisterController@register')->name('auth.registrando');
 
 

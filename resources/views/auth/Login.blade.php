@@ -7,6 +7,15 @@
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-8 align-item-center">
                 <div class="border">
+                     @if (count($errors) > 0)
+         <div class = "alert alert-danger">
+            <ul>
+               @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+               @endforeach
+            </ul>
+         </div>
+      @endif
                     <h3 class="bg-gray p-4">Entre agora</h3>
                     <form action="{{ route('auth.login') }}" method="post">
                         <fieldset class="p-4">
