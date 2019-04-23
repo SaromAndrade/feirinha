@@ -63,19 +63,20 @@ class RegisterController extends Controller
      */
     protected function create(Request $request)
     {   
-        dd('teste');
-        //$login->create($request->([
-           // 'email' => $data['email'],
-            //'password' => bcrypt($data['password']),
-            //'remember-token' => $data['remember-token']
-        //]));
+    $this->validator($data)
+        $login->create($request->([
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'remember-token' => $data['remember-token']
+        ]));
 
-
-       // $this->$usuario->insert ([
-        //'idlogin' => $data[],
-        //'data_nasc' => $data['data_nasc'],
-        //'cpf'=>$data['cpf'],
-        //'name' => $data['name']]);
+  
+        $this->$usuario->insert ([
+        'idlogin' => $data[],
+        'data_nasc' => $data['data_nasc'],
+        'cpf'=>$data['cpf'],
+        'name' => $data['name']]);
     }
-
 }
+
+

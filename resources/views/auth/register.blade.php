@@ -7,12 +7,23 @@
                 <div class="col-lg-5 col-md-8 align-item-center">
                     <div class="border border">
                         <h3 class="bg-gray p-4">Registrar</h3>
-                        <form action="{{ route('login.register') }}" method="post">
+                        <form action="{{ route('auth.register') }}" method="post">
+                             @if (count($errors) > 0)
+         <div class = "alert alert-danger">
+            <ul>
+               @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+               @endforeach
+            </ul>
+         </div>
+      @endif
                             <fieldset class="p-4">
                                 <input type="email" placeholder="Email*" class="border p-3 w-100 my-2"
                                 name="email">
                                 <input type="password" placeholder="Password*" class="border p-3 w-100 my-2"
                                 name="password">
+                                <input type="password" placeholder="Confirmed*" class="border p-3 w-100 my-2"
+                                name="passwordconfirmed">
                                 <input type="text" placeholder="Nome Completo*" class="border p-3 w-100 my-2"
                                 name="name">
                                 <input type="Date" placeholder="Data de Nascimento" class="border p-3 w-100 my-2"
